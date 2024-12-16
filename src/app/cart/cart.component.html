@@ -1,0 +1,63 @@
+<div class="handelFooter">
+  <div class="bg-main-light p-5 rounded">
+    <h2 class="fw-bold">Shop cart</h2>
+    <div class="container">
+      <h6 class="text-main">
+        Total Price :
+        <span class="text-black fw-bold">
+          {{ cartDetails?.totalCartPrice | currency : "EGP" }}</span
+        >
+      </h6>
+      <div class="my-3" *ngFor="let product of cartDetails?.products">
+        <div class="row py-3 mx-0 border-bottom">
+          <div class="col-md-1">
+            <img
+              class="w-100"
+              [src]="product?.product.imageCover"
+              [alt]="product?.product.title"
+            />
+          </div>
+          <div class="col-md-11 d-flex justify-content-between">
+            <div>
+              <h6>{{ product.product.title }}</h6>
+              <h6 class="fw-bold">{{ product.price | currency : "EGP" }}</h6>
+              <button
+                (click)="removeItem(product.product._id)"
+                class="btn btn-outline-danger"
+              >
+                <i class="mx-2 fa-regular fa-trash-can"></i>
+                <span *ngIf="!isLoading">Remove</span>
+                <span *ngIf="isLoading"
+                  ><i class="fa-solid fa-spinner fa-spin"></i
+                ></span>
+              </button>
+            </div>
+            <div class="d-flex align-items-center">
+              <button
+                (click)="updateItem(product.product._id, product.count + 1)"
+                class="btn btn-outline-success"
+              >
+                +
+              </button>
+              <span *ngIf="!isLoadingUpdate" class="mx-2">{{
+                product?.count
+              }}</span>
+              <span *ngIf="isLoadingUpdate"
+                ><i class="fa-solid fa-spinner fa-spin"></i
+              ></span>
+              <button
+                (click)="updateItem(product.product._id, product.count - 1)"
+                class="btn btn-outline-success"
+              >
+                -
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-success">
+        <a class="text-light" routerLink="/checkOut"> Online Payment </a>
+      </button>
+    </div>
+  </div>
+</div>

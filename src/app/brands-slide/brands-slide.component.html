@@ -1,0 +1,15 @@
+
+<div>
+  <h2 class="fw-bold mt-3 mb-2">Shop Popular <span class="text-main">Brands</span></h2>
+  <owl-carousel-o [options]="customOptions">
+    <ng-container *ngFor="let brands of brands" >
+      <ng-template carouselSlide>
+          <div class="bg-light rounded border p-2 text-center">
+            <img class="w-100" height="200" [src]="brands.image">
+            <p class="text-center">{{brands.name}}</p>
+          </div>
+      </ng-template>
+    </ng-container>
+
+  </owl-carousel-o>
+</div>

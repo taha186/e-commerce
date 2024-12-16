@@ -1,0 +1,35 @@
+<div class="handelFooter">
+  <div *ngFor="let wishlist of wishlistDetails"  class="row border-bottom p-3 bg-main-light">
+    <div class="col-md-2">
+      <img class="w-100" [src]="wishlist.imageCover" alt="img product wishlist">
+    </div>
+    <div class="col-md-10">
+      <h4 class="text-main fw-bold">{{wishlist.title.split(' ').slice(0,2).join(' ')}}</h4>
+      <h6 class="my-3 text-muted">{{wishlist.description}}</h6>
+      <div class="justify-content-between d-flex mt-4">
+        <h6 class="text-muted"> <span class="text-main">sold :</span>  {{wishlist.sold}}</h6>
+        <h6 class="text-muted"> <span class="text-main">Available :</span>  {{wishlist.quantity}}</h6>
+      </div>
+      <h6 class="my-2 text-muted">{{wishlist.updatedAt|date:'yyyy/mm'}}</h6>
+
+      <div class="d-flex align-items-center justify-content-between">
+        <span class="text-muted fw-bold font-sm">{{wishlist.price|currency:'EGP'}}</span>
+        <div>
+            <i class="fas fa-star rating-color"></i>
+        <span class="text-muted fw-bold font-sm">{{wishlist.ratingsAverage}}</span>
+        </div>
+    </div>
+      <div class="d-flex justify-content-between mt-4">
+        <button (click)="addToCart(wishlist._id)" class="btn bg-main text-white w-25 my-3">
+          <span *ngIf="!isLoading">+ Add</span>
+          <span *ngIf="isLoading"><i class="fa-solid fa-spinner fa-spin"></i></span>
+        </button>
+        <button (click)="removeProductWishlist(wishlist._id)" class="btn bg-danger text-white w-25 my-3">
+          <span *ngIf="!isLoading">- Remove</span>
+          <span *ngIf="isLoading"><i class="fa-solid fa-spinner fa-spin"></i></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>

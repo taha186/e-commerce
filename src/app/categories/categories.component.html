@@ -1,0 +1,11 @@
+<h1 class="text-center text-main">All Categories</h1>
+<div class="row mt-5">
+  <div class="col-md-4" *ngFor="let categories of categories">
+    <a class="shadowMain" [routerLink]="['/categoriesDetails' , categories._id]">
+      <div class=" text-center my-2 pointer">
+        <img class="w-100" height="400" [src]="categories.image">
+        <p class="text-center text-main fw-bold my-3">{{categories.name}}</p>
+      </div>
+    </a>
+  </div>
+</div>

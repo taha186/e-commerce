@@ -1,0 +1,13 @@
+<h1 class="text-center text-main fw-bold">All Brands</h1>
+<div class="row">
+<div *ngFor="let brands of brands" class="col-md-3">
+  <div class=" pointer">
+    <a class="shadowMain" [routerLink]="['/brandsDetails' , brands._id]">
+      <div class="rounded border p-2 text-center my-3">
+        <img class="w-100"  [src]="brands?.image">
+        <h5 class="text-center">{{brands?.name}}</h5>
+      </div>
+    </a>
+  </div>
+</div>
+</div>

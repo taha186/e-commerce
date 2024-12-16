@@ -1,0 +1,10 @@
+<div class="row py-4 align-items-center mx-5">
+  <div class="col-md-4">
+    <img class="w-100" [src]="categoriesDetails?.image" alt="categories Details img">
+  </div>
+  <div class="col-md-8">
+    <h2 class="text-main fw-bold mb-2">{{categoriesDetails?.name}}</h2>
+    <h5 class="text-muted my-3 mx-3"> Date Created <span class="text-main"> {{categoriesDetails?.createdAt|date:'MMM d, y'}}</span></h5>
+    <h5 class="text-muted mx-3"> Last Updated <span class="text-main"> {{categoriesDetails?.updatedAt|date:'MMM d, y'}}</span></h5>
+  </div>
+</div>

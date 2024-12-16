@@ -1,52 +1,64 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { CartComponent } from './components/cart/cart.component';
-import { CategioresComponent } from './components/categiores/categiores.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { NavAuthComponent } from './components/nav-auth/nav-auth.component';
-import { NavBlankComponent } from './components/nav-blank/nav-blank.component';
-import { BlankLayoutComponent } from './components/blank-layout/blank-layout.component';
-import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
-import { BrandsComponent } from './components/brands/brands.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisiterComponent } from './components/regisiter/regisiter.component';
-import { NotfoundComponent } from './components/notfound/notfound.component';
-import { ProductsComponent } from './components/products/products.component';
-import{HttpClientModule}from '@angular/common/http'
+import { HomeComponent } from './home/home.component';
+import { CartComponent } from './cart/cart.component';
+import { ProductsComponent } from './products/products.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { BrandsComponent } from './brands/brands.component';
+import { NavComponent } from './nav/nav.component';
+import { FooterComponent } from './footer/footer.component';
+import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/SignupComponent';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DetailsComponent } from './components/details/details.component';
-import{BrowserAnimationsModule}from "@angular/platform-browser/animations";
+import{HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { ProductDetailsComponent } from './product-details/product-details.component'
+import { BrowserAnimationsModule } from'@angular/platform-browser/animations'
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { TermextPipe } from './shared/pipe/termext.pipe';
-import { SearchPipe } from './shared/pipe/search.pipe';
-import { ToastrModule } from 'ngx-toastr';
-import { CheckoutComponent } from './components/checkout/checkout.component';
+import { MainSliderComponent } from './main-slider/main-slider.component';
+import { CategoriesSlideComponent } from './categories-slide/categories-slide.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { SearchPipe } from './search.pipe';
+import { LoaderComponent } from './loader/loader.component';
+import { LoaderInterceptor } from './loader.interceptor';
+import { BrandsSlideComponent } from './brands-slide/brands-slide.component';
+import { CategoriesDeatilsComponent } from './categories-deatils/categories-deatils.component';
+import { BrandsDetailsComponent } from './brands-details/brands-details.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
+import { AllordersComponent } from './allorders/allorders.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CartComponent,
-    CategioresComponent,
-    FooterComponent,
-    NavAuthComponent,
-    NavBlankComponent,
-    BlankLayoutComponent,
-    AuthLayoutComponent,
-    BrandsComponent,
-    LoginComponent,
-    RegisiterComponent,
-    NotfoundComponent,
     ProductsComponent,
-    DetailsComponent,
-    TermextPipe,
+    CategoriesComponent,
+    BrandsComponent,
+    NavComponent,
+    FooterComponent,
+    SigninComponent,
+    SignupComponent,
+    NotFoundComponent,
+    ProductDetailsComponent,
+    MainSliderComponent,
+    CategoriesSlideComponent,
+    ForgotpasswordComponent,
+    ResetPasswordComponent,
+    CheckoutComponent,
     SearchPipe,
-    CheckoutComponent
-    
+    LoaderComponent,
+    BrandsSlideComponent,
+    CategoriesDeatilsComponent,
+    BrandsDetailsComponent,
+    WishlistComponent,
+    AllordersComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -56,11 +68,14 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     BrowserAnimationsModule,
     CarouselModule,
     FormsModule,
-    ToastrModule.forRoot(), 
-   
-
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true,
+   },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,33 @@
+<div class="row bg-main-light p-5">
+  <div class="col-md-12 border-bottom my-3" *ngFor="let order of orders">
+    <h5 class="text-muted fw-bold">
+      Number of purchases :<span class="text-main fw-medium">
+        {{ order.cartItems.length }}
+        <i class="text-info fa-solid fa-circle-check"></i
+      ></span>
+    </h5>
+    <h5 class="text-muted fw-bold my-2">
+      Purchased in :<span class="text-main fw-medium">
+        {{ order.paidAt | date : "M/d/yy, h:mm a" }}</span
+      >
+    </h5>
+    <h5 class="text-muted fw-bold">
+      Been paid :
+      <span class="text-main fw-medium">{{
+        order.totalOrderPrice | currency : "EGP"
+      }}</span>
+      by <span class="text-main fw-medium">{{ order.paymentMethodType }}</span>
+    </h5>
+    <h6 class="text-main my-2" *ngIf="order.taxPrice === 0">
+      There are no taxes
+      <i class="fa-regular fa-face-smile-beam text-warning"></i>
+    </h6>
+    <h6 class="text-main my-2" *ngIf="order.taxPrice > 0">
+      {{ order.taxPrice }}
+    </h6>
+    <h6 class="text-danger mb-2" *ngIf="order.isDelivered === false">
+      Not Delivered ,Please wait. it will arrive within three days
+    </h6>
+  </div>
+</div>
+<!-- <button (click)="geId()">click</button> -->

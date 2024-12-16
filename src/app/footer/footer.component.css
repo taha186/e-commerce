@@ -1,0 +1,13 @@
+img{
+  width: 60px;
+}
+.apple img
+{
+  width: 100px;
+}
+.parent{
+  position: relative;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}

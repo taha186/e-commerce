@@ -1,0 +1,6 @@
+.shadowMain :hover{
+  box-shadow:1px 1px 10px #0aad0a ;
+}
+.shadowMain :hover *{
+  box-shadow: 0 0 0 0 transparent;
+}
